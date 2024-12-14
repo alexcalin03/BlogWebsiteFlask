@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>
+    <i>Posted on {{ post.posted.strftime('%Y-%m-%d') }} by {{ post.user.username }}</i>
+    <br>
+    <i>Read {{ post.reads }} times</i>
+</p>
+
+<p>{{ post.body }}</p>
+
+<hr>
+
+<h2>Comments</h2>
+<ul id="commentul">
+    {% for comment in post.comments %}
+    <li id="comments">
+        <strong>{{ comment.user.username }}</strong> said: <p>{{ comment.body }}</p>
+    </li>
+    {% else %}
+    <li>No comments yet. Be the first to comment!</li>
+    {% endfor %}
+</ul>
+
+    <a id="backbutton" href="{{ url_for('display_all_posts') }}">Back to Posts</a>
+{% endblock %}

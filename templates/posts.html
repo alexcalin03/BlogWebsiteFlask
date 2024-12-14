@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+<section>
+  <h2>All Posts</h2>
+  <ul id="posts">
+    {% for post in posts %}
+    <li>
+      <h3 id="post_display"><a href="{{ url_for('display_post', post_id=post.id) }}">{{ post.title }}</a></h3>
+    <p>{{ post.reads }} views</p>
+    </li>
+    {% else %}
+    <li>No posts available.</li>
+    {% endfor %}
+  </ul>
+
+<a id="backbutton" href="{{ url_for('display_content') }}">Back to Home</a>
+</section>
+{% endblock %}

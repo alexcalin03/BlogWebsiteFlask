@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<section>
+  <h2>{{ user.username }}</h2>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Age:</strong> {{ user.age }}</p>
+
+  <h3 id="user_profile_post_name">Posts by {{ user.username }}</h3>
+  <ul id="userprofileul">
+    {% for post in user.posts %}
+    <li id="postdisplay">
+      <a id href="{{ url_for('display_post', post_id=post.id) }}">{{ post.title }}</a>
+    </li>
+    {% else %}
+    <li>No posts available.</li>
+    {% endfor %}
+  </ul>
+
+  <a id="backbutton" href="{{ url_for('display_all_users') }}">Back to Users</a>
+</section>
+{% endblock %}

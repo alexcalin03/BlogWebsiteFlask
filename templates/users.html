@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+<h1>All Users</h1>
+<ul id="users">
+    {% for user in users %}
+    <li>
+        <a href="{{ url_for('display_user_profile', user_id=user.id) }}">{{ user.username }}</a>
+    </li>
+    {% else %}
+    <li>No users found.</li>
+    {% endfor %}
+</ul>
+
+<a id="backbutton" href="{{ url_for('display_content') }}">Back to Home</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <link href="/static/styles.css" rel="stylesheet"/>
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+
+    <header>
+      <h1>Blogg.io</h1>
+      <nav id="navbar">
+        <a href="{{ url_for('display_content') }}">Home</a> |
+        <a href="{{ url_for('display_all_users') }}">Users</a> |
+        <a href="{{ url_for('display_all_posts') }}">Posts</a>
+      </nav>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2024 Blog app</p>
+    </footer>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+  </body>
